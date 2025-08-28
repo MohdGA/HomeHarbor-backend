@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from models.property import PropertyModel
 from models.user import UserModel
-from serializers.property import PropertySchema, PropertyCreate as PropertyCreateShcema
+from serializers.property import PropertySchema, PropertyCreateSchema
 
 from typing import List
 from database import get_db
@@ -28,7 +28,7 @@ def get_single_property(property_id: int, db: Session = Depends(get_db)):
 
 
 @router.post('/properties' , response_model=PropertySchema)
-def create_property(property: PropertyCreateShcema, db: Session = Depends(get_db), current_user: UserModel = Depends(get_current_user)):
+def create_property(property: PropertyCreateSchema, db: Session = Depends(get_db), current_user: UserModel = Depends(get_current_user)):
     new_property = PropertyModel(**property.dict(), user_id = current_user.id)
     
     db.add(new_property)
@@ -38,7 +38,7 @@ def create_property(property: PropertyCreateShcema, db: Session = Depends(get_db
     return new_property
 
 @router.put('/properties/{property_id}', response_model=PropertySchema)
-def update_property(property_id: int, property: PropertyCreateShcema, db: Session = Depends(get_db), current_user = Depends(get_current_user)):
+def update_property(property_id: int, property: PropertyCreateSchema, db: Session = Depends(get_db), current_user = Depends(get_current_user)):
     db_property = db.query(PropertyModel).filter(PropertyModel.id == property_id).first()
     
     if not db_property:
