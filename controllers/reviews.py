@@ -59,6 +59,6 @@ def delete_review(review_id: int, db: Session = Depends(get_db)):
     if not db_review:
         raise HTTPException(status_code=404, detail="Review not found")
 
-    db.delete(db_reviews)
+    db.delete(db_review)
     db.commit()
     return {"message": f"Comment with ID {review_id} has been deleted"}
