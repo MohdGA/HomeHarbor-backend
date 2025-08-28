@@ -35,3 +35,18 @@ def create_review(property_id: int, review: ReviewSchema, db: Session = Depends(
   db.commit()
   db.refresh(new_commit)
   return new_review
+
+
+@router.put("/reviews/{review_id}", response_model=ReviewSchema)
+def update_review(review_id: int, review: ReviewSchema, db: Session = Depends(get_db)):
+    db_review = db.query(ReviewModel).filter(ReviewModel.id == review_id).first()
+    if not db_review:
+        raise HTTPException(status_code=404, detail="Review not found")
+
+    review_data = review.dict(exclude_unset=True)
+    for key, value in review_data.items():
+        setattr(db_review, key, value)
+
+    db.commit()
+    db.refresh(db_review)
+    return db_review
