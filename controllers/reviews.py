@@ -8,7 +8,7 @@ from database import get_db
 router = APIRouter()
 
 #gets all reviews for a property
-@router.get('/properties/{property_id}/reviews', response_model=List[ReviewsSchema])
+@router.get('/properties/{property_id}/reviews', response_model=List[ReviewSchema])
 def get_properties(property_id: int, db: Session = Depends(get_db)):
   Property = db.query(PropertyModel).filter(PropertyModel.id == property_id).first()
   if not property:
@@ -50,3 +50,13 @@ def update_review(review_id: int, review: ReviewSchema, db: Session = Depends(ge
     db.commit()
     db.refresh(db_review)
     return db_review
+
+@router.delete("/reviews/{review_id}")
+def delete_review(review_id: int, db: Session = Depends(get_db)):
+    db_review = db.query(ReviewModel).filter(ReviewModel.id == review_id).first()
+    if not db_review:
+        raise HTTPException(status_code=404, detail="Review not found")
+
+    db.delete(db_reviews)
+    db.commit()
+    return {"message": f"Comment with ID {review_id} has been deleted"}
