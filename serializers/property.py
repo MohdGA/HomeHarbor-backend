@@ -4,7 +4,6 @@ from .review import ReviewSchema
 from .user import UserResponseSchema
 
 
-
 class PropertySchema(BaseModel):
     id: Optional[int] = Field(default=None)
     title: str
@@ -21,9 +20,7 @@ class PropertySchema(BaseModel):
         orm_mode = True
 
 
-
-
-    class PropertyCreateSchema(BaseModel):
+class PropertyCreateSchema(BaseModel):
         title: str
         price: int
         numOfRooms: int
