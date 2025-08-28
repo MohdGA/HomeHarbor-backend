@@ -1,8 +1,9 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
-# from models.reviews import ReviewModel
-# from serializers.review import ReviewtSchema
+from models.review import ReviewModel
+from serializers.review import ReviewSchema
 from typing import List
+from models.property import PropertyModel
 from database import get_db
 
 router = APIRouter()
@@ -26,15 +27,16 @@ def get_review(review_id: int, db: Session = Depends(get_db)):
 #create a new review for given property id
 @router.post('/properties/{property_id}/reviews', response_model=ReviewSchema)
 def create_review(property_id: int, review: ReviewSchema, db: Session = Depends(get_db)):
-  property = db.query(PropertyModel).filter(PropertyModel.id == poperty_id).first()
-  if not property:
-    raise HTTPException(status_code=404, detail="Property not found")
+    property = db.query(PropertyModel).filter(PropertyModel.id == property_id).first()
+    if not property:
+        raise HTTPException(status_code=404, detail="Property not found")
 
-  new_comment = ReviewModel(**review.dict(), property_id=property_id)
-  db.add(new_review)
-  db.commit()
-  db.refresh(new_commit)
-  return new_review
+    new_review = ReviewModel(**review.dict(), property_id=property_id)
+    db.add(new_review)
+    db.commit()
+    db.refresh(new_review)
+    return new_review
+
 
 
 @router.put("/reviews/{review_id}", response_model=ReviewSchema)
