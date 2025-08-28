@@ -1,12 +1,13 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
-from models.reviews import ReviewModel
-from serializers.review import ReviewtSchema
+# from models.reviews import ReviewModel
+# from serializers.review import ReviewtSchema
 from typing import List
 from database import get_db
 
 router = APIRouter()
 
+#gets all reviews for a property
 @router.get('/properties/{property_id}/reviews', response_model=List[ReviewsSchema])
 def get_properties(property_id: int, db: Session = Depends(get_db)):
   Property = db.query(PropertyModel).filter(PropertyModel.id == property_id).first()
@@ -15,13 +16,14 @@ def get_properties(property_id: int, db: Session = Depends(get_db)):
 
   return property.reviews
 
+#gets a single review by id
 @router.get('/properties/{reviews_id}', response_model=ReviewSchema)
 def get_review(review_id: int, db: Session = Depends(get_db)):
   review = db.query(ReviewModel).filter(ReviewModel.id == review_id).first()
 
   return review
 
-
+#create a new review for given property id
 @router.post('/properties/{property_id}/reviews', response_model=ReviewSchema)
 def create_review(property_id: int, review: ReviewSchema, db: Session = Depends(get_db)):
   property = db.query(PropertyModel).filter(PropertyModel.id == poperty_id).first()
