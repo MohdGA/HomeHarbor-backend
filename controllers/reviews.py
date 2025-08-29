@@ -18,7 +18,7 @@ def get_properties(property_id: int, db: Session = Depends(get_db)):
   return property.reviews
 
 #gets a single review by id
-@router.get('/properties/{reviews_id}', response_model=ReviewSchema)
+@router.get('/reviews/{review_id}', response_model=ReviewSchema)
 def get_review(review_id: int, db: Session = Depends(get_db)):
   review = db.query(ReviewModel).filter(ReviewModel.id == review_id).first()
 
@@ -61,4 +61,4 @@ def delete_review(review_id: int, db: Session = Depends(get_db)):
 
     db.delete(db_review)
     db.commit()
-    return {"message": f"Comment with ID {review_id} has been deleted"}
+    return {"message": f"Review with ID {review_id} has been deleted"}
