@@ -1,7 +1,7 @@
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel, Field
 from .user import UserResponseSchema
-from .property import PropertyResponseSchema
+from .property import PropertySchema
 
 class RequestSchema(BaseModel):
    id: Optional[int] = Field(default=None)
@@ -10,9 +10,7 @@ class RequestSchema(BaseModel):
 
    # Relationships
    user: UserResponseSchema
-   property: PropertyResponseSchema
+   property: List[PropertySchema]
 
-
-
-class Config:
-   orm_mode = True
+   class Config:
+      orm_mode = True

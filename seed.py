@@ -2,6 +2,8 @@
 
 from sqlalchemy.orm import sessionmaker, Session
 from data.user_data import user_list
+from data.property_data import property_list
+
 from config.environment import db_URI
 from sqlalchemy import create_engine
 from models.base import Base
@@ -24,6 +26,9 @@ try:
     db.add_all(user_list)
     db.commit()
 
+    db.add_all(property_list)
+    db.commit()
+    
     db.close()
 
     print("Database seeding complete! 👋")

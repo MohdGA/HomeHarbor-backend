@@ -1,17 +1,13 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from .base import BaseModel
-from .review import ReviewModel
-from .user import UserModel
-
-
 
 class PropertyModel(BaseModel):
 
     __tablename__ = 'properties'
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, unique=True)
+    title = Column(String)
     price = Column(Integer)
     numOfRooms = Column(Integer)
     numOfBathrooms = Column(Integer)
@@ -20,7 +16,4 @@ class PropertyModel(BaseModel):
 
 
     user = relationship('UserModel', back_populates='properties')
-
-
-
-    reviews = relationship('ReviewModel', back_populates='property')  
+    # reviews = relationship('ReviewModel', back_populates='property')  

@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
+from models.property import PropertyModel
 from models.request import RequestModel
 from serializers.request import RequestCreateSchema, RequestSchema
 from models.user import UserModel
