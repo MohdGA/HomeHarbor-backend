@@ -11,6 +11,6 @@ class ReviewModel(BaseModel):
     content = Column(String, nullable=False)
 
     #relationship
-    review_id = Column(String, nullable = False)
+    property_id = Column(String, nullable = False)
     review = relationship("ReviewModel", back_populates="reviews")
 
