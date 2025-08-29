@@ -7,7 +7,7 @@ class PropertyModel(BaseModel):
     __tablename__ = 'properties'
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, unique=True)
+    title = Column(String)
     price = Column(Integer)
     numOfRooms = Column(Integer)
     numOfBathrooms = Column(Integer)
