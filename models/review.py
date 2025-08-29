@@ -10,6 +10,6 @@ class ReviewModel(BaseModel):
     content = Column(String, nullable=False)
 
     #relationship
-    property_id = Column(Integer, nullable = False)
+    property_id = Column(Integer, ForeignKey('properties.id'), nullable=False)
     property = relationship("PropertyModel", back_populates="reviews")
 

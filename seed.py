@@ -2,7 +2,7 @@
 
 from sqlalchemy.orm import sessionmaker, Session
 from data.user_data import user_list
-from data.property_data import property_list
+from data.property_data import property_list, reviews_list
 
 from config.environment import db_URI
 from sqlalchemy import create_engine
@@ -27,6 +27,9 @@ try:
     db.commit()
 
     db.add_all(property_list)
+    db.commit()
+
+    db.add_all(reviews_list)
     db.commit()
     
     db.close()

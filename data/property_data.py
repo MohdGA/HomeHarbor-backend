@@ -1,5 +1,5 @@
 from models.property import PropertyModel
-# from models.review import ReviewModel
+from models.review import ReviewModel
 # from models.request import RequestModel
 
 property_list = [
@@ -9,3 +9,8 @@ property_list = [
 ]
 
 
+reviews_list = [
+    ReviewModel(content="This is a great apartment", property_id=1),
+    ReviewModel(content="This house is expensive", property_id=2),
+    ReviewModel(content="I liked this villa", property_id=3)
+]
