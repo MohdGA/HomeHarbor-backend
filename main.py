@@ -5,8 +5,6 @@ from fastapi import FastAPI
 from controllers.users import router as UsersRouter
 from controllers.property import router as PropertyRouter
 from controllers.reviews import router as ReviewRouter
-from dotenv import load_dotenv
-load_dotenv()
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
