@@ -7,10 +7,9 @@ class ReviewModel(BaseModel):
 
     #primary key for each review
     id = Column(Integer, primary_key=True, index=True)
-
     content = Column(String, nullable=False)
 
     #relationship
-    review_id = Column(String, nullable = False)
-    review = relationship("ReviewModel", back_populates="reviews")
+    property_id = Column(Integer, nullable = False)
+    property = relationship("PropertyModel", back_populates="reviews")
 

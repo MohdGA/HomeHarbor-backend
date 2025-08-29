@@ -11,14 +11,14 @@ router = APIRouter()
 #gets all reviews for a property
 @router.get('/properties/{property_id}/reviews', response_model=List[ReviewSchema])
 def get_properties(property_id: int, db: Session = Depends(get_db)):
-  Property = db.query(PropertyModel).filter(PropertyModel.id == property_id).first()
+  property = db.query(PropertyModel).filter(PropertyModel.id == property_id).first()
   if not property:
     raise HTTPException(status_code=404, detail="Property not found")
 
   return property.reviews
 
 #gets a single review by id
-@router.get('/properties/{reviews_id}', response_model=ReviewSchema)
+@router.get('/reviews/{review_id}', response_model=ReviewSchema)
 def get_review(review_id: int, db: Session = Depends(get_db)):
   review = db.query(ReviewModel).filter(ReviewModel.id == review_id).first()
 
@@ -61,4 +61,4 @@ def delete_review(review_id: int, db: Session = Depends(get_db)):
 
     db.delete(db_review)
     db.commit()
-    return {"message": f"Comment with ID {review_id} has been deleted"}
+    return {"message": f"Review with ID {review_id} has been deleted"}
