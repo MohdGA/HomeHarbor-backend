@@ -71,4 +71,4 @@ def delete_property(property_id: int, db: Session = Depends(get_db), current_use
     db.delete(db_property)
     db.commit()
     
-    return {"message": f"Tea with ID {property_id} has been deleted"}
+    return {"message": f"Property with ID {property_id} has been deleted"}
