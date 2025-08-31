@@ -6,12 +6,10 @@ from .user import UserResponseSchema
 class RequestSchema(BaseModel):
    id: Optional[int] = Field(default=None)
    approval: bool
-
    # Relationships
-   user: UserResponseSchema
+  
    # property: PropertySchema
- 
-
 
    class Config:
       orm_mode = True
+      

@@ -15,7 +15,7 @@ class RequestModel(BaseModel):
 
     # Foreign Keys
     user_id = Column(Integer, ForeignKey('users.id'))
-    property_id = Column(Integer, ForeignKey('properties.id'))
+    property_id = Column(Integer, ForeignKey('properties.id'), nullable=False)
 
     # Relationships
     user = relationship('UserModel', back_populates="requests")
