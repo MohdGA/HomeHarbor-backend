@@ -14,8 +14,8 @@ class RequestModel(BaseModel):
     approval = Column(Boolean)
 
     # Foreign Keys
-    user_id = Column(Integer, ForeignKey('user.id'))
-    property_id = Column(Integer, ForeignKey('property.id'))
+    user_id = Column(Integer, ForeignKey('users.id'))
+    property_id = Column(Integer, ForeignKey('properties.id'))
 
     # Relationships
     user = relationship('UserModel', back_populates="requests")
