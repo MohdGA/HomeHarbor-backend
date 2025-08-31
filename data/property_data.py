@@ -1,6 +1,6 @@
 from models.property import PropertyModel
 from models.review import ReviewModel
-# from models.request import RequestModel
+from models.request import RequestModel
 
 property_list = [
     PropertyModel(title="Apartment", price= 40, numOfRooms=5,numOfBathrooms=4,location='Manama',user_id=1),
@@ -13,4 +13,10 @@ reviews_list = [
     ReviewModel(content="This is a great apartment", property_id=1),
     ReviewModel(content="This house is expensive", property_id=2),
     ReviewModel(content="I liked this villa", property_id=3)
+]
+
+request_list = [
+    RequestModel(approval=True, user_id=1, property_id=1),
+    RequestModel(approval=False, user_id=2, property_id=2),
+    RequestModel(approval=True, user_id=3, property_id=3),
 ]

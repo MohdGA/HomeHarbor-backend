@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone
 import jwt
 
 from models.property import PropertyModel
+# from models.request import RequestModel
 
 from config.environment import jwt_secret
 
@@ -19,7 +20,10 @@ class UserModel(BaseModel):
     username = Column(String, unique=True)  # Each username must be unique
     email = Column(String, unique=True)  # Each email must be unique
     password_hash = Column(String, nullable=True)
+    
+    # Relationships
     properties = relationship('PropertyModel', back_populates='user')
+    requests = relationship('RequestModel', back_populates='user')
 
     # Auth Methods
 

@@ -1,16 +1,16 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from .base import BaseModel
-from .user import UserModel
+# from .user import UserModel
+
 
 class RequestModel(BaseModel):
 
-    __tablename__ = "request"
+    __tablename__ = "requests"
 
     id = Column(Integer, primary_key=True, index=True)
 
     # Columens For Request Table
-    title = Column(String)
     approval = Column(Boolean)
 
     # Foreign Keys
@@ -19,7 +19,7 @@ class RequestModel(BaseModel):
 
     # Relationships
     user = relationship('UserModel', back_populates="requests")
-    property = relationship('PropertyModel', back_populates="request")
+    property = relationship('PropertyModel', back_populates="requests")
 
 
 
