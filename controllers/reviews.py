@@ -31,12 +31,11 @@ def create_review(property_id: int, review: ReviewSchema, db: Session = Depends(
     if not property:
         raise HTTPException(status_code=404, detail="Property not found")
 
-    new_review = ReviewModel(**review.dict(), property_id=property_id)
+    new_review = ReviewModel(**review.dict())
     db.add(new_review)
     db.commit()
     db.refresh(new_review)
     return new_review
-
 
 
 @router.put("/reviews/{review_id}", response_model=ReviewSchema)

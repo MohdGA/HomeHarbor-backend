@@ -16,7 +16,6 @@ def get_requests(property_id: int,db: Session = Depends(get_db)):
     property = db.query(PropertyModel).filter(PropertyModel.id == property_id).first()
     if not property:
         raise HTTPException(status_code=404, detail="Request not found")
-    print(property.requests)
     return property.requests
 
 @router.get('/requests/{request_id}', response_model=RequestSchema)
@@ -27,8 +26,14 @@ def get_single_request(request_id: int, db: Session = Depends(get_db)):
     return request
 
 @router.post('/properties/{property_id}/requests', response_model=RequestSchema)
-def create_request(request:RequestSchema, db: Session = Depends(get_db)):
-    new_request= RequestModel(**request.dict())
+def create_request(property_id:int,request:RequestSchema, db: Session = Depends(get_db)):
+    
+    property = db.query(PropertyModel).filter(PropertyModel.id == property_id).first()
+    if not property:
+        raise HTTPException(status_code=404, detail="Property not found")
+    
+    new_request = RequestModel(**request.dict(), property_id=property.id)
+
     db.add(new_request)
     db.commit()
     db.refresh(new_request)
