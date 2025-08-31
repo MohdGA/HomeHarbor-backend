@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Optional, List
 from .review import ReviewSchema
+from .request import RequestSchema
 from .user import UserResponseSchema
 
 
@@ -14,6 +15,7 @@ class PropertySchema(BaseModel):
 
 
     reviews: List[ReviewSchema] = []
+    requests: List[RequestSchema] = []
     user: UserResponseSchema
 
     class Config:

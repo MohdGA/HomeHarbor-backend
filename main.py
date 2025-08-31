@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from controllers.users import router as UsersRouter
 from controllers.property import router as PropertyRouter
 from controllers.reviews import router as ReviewRouter
+from controllers.requests import router as RequestRouter
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -26,6 +27,7 @@ app.add_middleware(
 app.include_router(UsersRouter, prefix='/api')
 app.include_router(PropertyRouter, prefix='/api')
 app.include_router(ReviewRouter, prefix='/api')
+app.include_router(RequestRouter, prefix='/api')
 
 @app.get('/')
 def home():
