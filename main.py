@@ -6,6 +6,7 @@ from controllers.users import router as UsersRouter
 from controllers.property import router as PropertyRouter
 from controllers.reviews import router as ReviewRouter
 from controllers.requests import router as RequestRouter
+from controllers.category import router as CategoryRouter
 from fastapi.middleware.cors import CORSMiddleware
 import cloudinary.uploader
 from config.cloudinary_config import cloudinary
@@ -14,8 +15,8 @@ app = FastAPI()
 
 
 origins = [
-    "http://127.0.0.1:5173",
-    "http://localhost:5173",
+    "http://127.0.0.1:5174",
+    "http://localhost:5174",
 ]
 
 app.add_middleware(
@@ -30,6 +31,7 @@ app.include_router(UsersRouter, prefix='/api')
 app.include_router(PropertyRouter, prefix='/api')
 app.include_router(ReviewRouter, prefix='/api')
 app.include_router(RequestRouter, prefix='/api')
+app.include_router(CategoryRouter, prefix='/api')
 
 @app.get('/')
 def home():
