@@ -15,6 +15,7 @@ class PropertyModel(BaseModel):
     numOfBathrooms = Column(Integer)
     location = Column(String)
     user_id = Column(Integer, ForeignKey('users.id'))
+    imageUrl = Column(String, nullable=True)
 
 
     user = relationship('UserModel', back_populates='properties')

@@ -12,6 +12,8 @@ class PropertySchema(BaseModel):
     numOfRooms: int
     numOfBathrooms: int
     location: str
+    imageUrl: Optional[str] = None
+    
 
 
     reviews: List[ReviewSchema] = []
@@ -28,6 +30,7 @@ class PropertyCreateSchema(BaseModel):
         numOfRooms: int
         numOfBathrooms: int
         location: str 
+        imageUrl: Optional[str] = None
 
 
 
