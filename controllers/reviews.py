@@ -4,6 +4,7 @@ from models.review import ReviewModel
 from serializers.review import ReviewSchema
 from typing import List
 from models.property import PropertyModel
+from models.notification import NotificationModel
 from database import get_db
 
 router = APIRouter()

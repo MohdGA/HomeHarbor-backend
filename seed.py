@@ -1,9 +1,12 @@
 # seed.py
 
+import models
 from sqlalchemy.orm import sessionmaker, Session
 from data.user_data import user_list
-from data.property_data import property_list, reviews_list, request_list
+
+
 from data.category_data import category_list
+from data.property_data import property_list, reviews_list, request_list, notification_list
 
 from config.environment import db_URI
 from sqlalchemy import create_engine
@@ -37,6 +40,9 @@ try:
     db.commit()
     
     db.add_all(request_list)
+    db.commit()
+    
+    db.add_all(notification_list)
     db.commit()
     
     db.close()

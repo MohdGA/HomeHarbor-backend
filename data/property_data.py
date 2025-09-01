@@ -2,6 +2,8 @@ from models.property import PropertyModel
 from models.review import ReviewModel
 from models.request import RequestModel
 from models.category import CategoryModel  # 👈 import your CategoryModel
+from models.notification import NotificationModel
+
 
 # Categories
 category_list = [
@@ -17,7 +19,7 @@ property_list = [
     PropertyModel(title="Villa", price=500000, numOfRooms=15, numOfBathrooms=14, location="Manama", user_id=1, category_id=3),
 ]
 
-# Reviews
+
 reviews_list = [
     ReviewModel(content="This is a great apartment", property_id=1),
     ReviewModel(content="This house is expensive", property_id=2),
@@ -30,3 +32,11 @@ request_list = [
     RequestModel(approval=False, user_id=2, property_id=2),
     RequestModel(approval=True, user_id=3, property_id=3),
 ]
+
+
+notification_list = [
+    NotificationModel(property_id = 1, request_id = 1),
+    NotificationModel(property_id = 2, request_id = 2),
+    NotificationModel(property_id = 3, request_id = 3)
+]
+

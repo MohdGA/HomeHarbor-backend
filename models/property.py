@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from .base import BaseModel
 
 
+
 class PropertyModel(BaseModel):
     __tablename__ = "properties"
 
@@ -12,6 +13,10 @@ class PropertyModel(BaseModel):
     numOfRooms = Column(Integer)
     numOfBathrooms = Column(Integer)
     location = Column(String)
+
+  
+    imageUrl = Column(String, nullable=True)
+
 
     # Foreign keys
     user_id = Column(Integer, ForeignKey("users.id"))

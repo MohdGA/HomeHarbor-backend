@@ -6,7 +6,6 @@ from datetime import datetime, timedelta, timezone
 import jwt
 
 from models.property import PropertyModel
-# from models.request import RequestModel
 
 from config.environment import jwt_secret
 
@@ -39,7 +38,8 @@ class UserModel(BaseModel):
             "exp": datetime.now(timezone.utc) + timedelta(days=1),  # Expiration time (1 day)
             "iat": datetime.now(timezone.utc),  # Issued at time
             "sub": str(self.id),  # Subject - the user ID
-            "username": self.username
+            "username": self.username,
+            "email": self.email
         }
 
         # Create the JWT token

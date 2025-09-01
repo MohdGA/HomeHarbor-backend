@@ -27,15 +27,15 @@ def get_single_property(property_id: int, db: Session = Depends(get_db)):
     return property
 
 
-@router.post('/properties' , response_model=PropertySchema)
+@router.post('/properties', response_model=PropertySchema)
 def create_property(property: PropertyCreateSchema, db: Session = Depends(get_db), current_user: UserModel = Depends(get_current_user)):
-    new_property = PropertyModel(**property.dict(), user_id = current_user.id)
-    
+    new_property = PropertyModel(**property.dict(), user_id=current_user.id)
     db.add(new_property)
     db.commit()
     db.refresh(new_property)
-    
     return new_property
+
+
 
 @router.put('/properties/{property_id}', response_model=PropertySchema)
 def update_property(property_id: int, property: PropertyCreateSchema, db: Session = Depends(get_db), current_user = Depends(get_current_user)):

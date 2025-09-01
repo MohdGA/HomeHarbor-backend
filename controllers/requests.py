@@ -4,6 +4,7 @@ from models.property import PropertyModel
 from models.request import RequestModel
 from serializers.request import RequestSchema
 from models.user import UserModel
+from models.notification import NotificationModel
 from typing import List
 from database import get_db
 from dependencies.get_current_user import get_current_user
@@ -37,4 +38,5 @@ def create_request(property_id:int,request:RequestSchema, db: Session = Depends(
     db.add(new_request)
     db.commit()
     db.refresh(new_request)
+    
     return new_request
