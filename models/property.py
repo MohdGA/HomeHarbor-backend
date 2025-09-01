@@ -1,8 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from .review import ReviewModel
 from .base import BaseModel
-from .request import RequestModel
+
 
 class PropertyModel(BaseModel):
 

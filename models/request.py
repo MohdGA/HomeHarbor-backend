@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from .base import BaseModel
-# from .user import UserModel
-
 
 class RequestModel(BaseModel):
 
@@ -20,6 +18,10 @@ class RequestModel(BaseModel):
     # Relationships
     user = relationship('UserModel', back_populates="requests")
     property = relationship('PropertyModel', back_populates="requests")
+    notification = relationship('NotificationModel', back_populates='request', uselist=False)
+    
+    
+   
 
 
 
