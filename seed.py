@@ -17,23 +17,23 @@ try:
     # Dropping (or deleting) the tables and creating them again is for convenience. Once we start to play around with
     # our data, changing our models, this seed program will allow us to rapidly throw out the old data and replace it.
     Base.metadata.drop_all(bind=engine)
-    Base.metadata.create_all(bind=engine)
+#     Base.metadata.create_all(bind=engine)
 
     print("seeding the database...")
     db = SessionLocal()
 
- # Seed comments
-    db.add_all(user_list)
-    db.commit()
+#  # Seed comments
+#     db.add_all(user_list)
+#     db.commit()
 
-    db.add_all(property_list)
-    db.commit()
+#     db.add_all(property_list)
+#     db.commit()
 
-    db.add_all(reviews_list)
-    db.commit()
+#     db.add_all(reviews_list)
+#     db.commit()
     
-    db.add_all(request_list)
-    db.commit()
+#     db.add_all(request_list)
+#     db.commit()
     
     db.close()
 

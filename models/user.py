@@ -6,7 +6,6 @@ from datetime import datetime, timedelta, timezone
 import jwt
 
 from models.property import PropertyModel
-# from models.request import RequestModel
 
 from config.environment import jwt_secret
 
