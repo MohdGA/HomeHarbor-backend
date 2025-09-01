@@ -24,5 +24,7 @@ request_list = [
 ]
 
 notification_list = [
-    NotificationModel(property_id = 1, request_id = 1)
+    NotificationModel(property_id = 1, request_id = 1),
+    NotificationModel(property_id = 2, request_id = 2),
+    NotificationModel(property_id = 3, request_id = 3)
 ]
