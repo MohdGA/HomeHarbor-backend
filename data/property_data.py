@@ -22,3 +22,7 @@ request_list = [
     RequestModel(approval=False, user_id=2, property_id=2),
     RequestModel(approval=True, user_id=3, property_id=3),
 ]
+
+notification_list = [
+    NotificationModel(property_id = 1, request_id = 1)
+]

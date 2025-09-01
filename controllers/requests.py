@@ -38,4 +38,5 @@ def create_request(property_id:int,request:RequestSchema, db: Session = Depends(
     db.add(new_request)
     db.commit()
     db.refresh(new_request)
+    
     return new_request
