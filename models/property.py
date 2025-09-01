@@ -1,7 +1,6 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float
 from sqlalchemy.orm import relationship
 from .base import BaseModel
-
 
 
 class PropertyModel(BaseModel):
@@ -16,6 +15,9 @@ class PropertyModel(BaseModel):
 
   
     imageUrl = Column(String, nullable=True)
+    latitude = Column(Float, nullable=True)
+    longitude = Column(Float, nullable=True)
+
 
 
     # Foreign keys

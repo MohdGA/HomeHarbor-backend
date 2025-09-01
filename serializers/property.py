@@ -26,14 +26,15 @@ class PropertySchema(BaseModel):
 
 
 class PropertyCreateSchema(BaseModel):
-    title: str
-    price: int
-    numOfRooms: int
-    numOfBathrooms: int
-    location: str
-    category_id: Optional[int] = None
-    imageUrl: Optional[str] = None
-
+        title: str
+        price: int
+        numOfRooms: int
+        numOfBathrooms: int
+        location: str 
+        category_id: Optional[int] = None  
+        imageUrl: Optional[str] = None
+        latitude: Optional[float] = None
+        longitude: Optional[float] = None
 
 
 
