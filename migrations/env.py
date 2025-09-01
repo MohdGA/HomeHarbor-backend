@@ -25,6 +25,8 @@ if config.config_file_name is not None:
 from models.base import Base
 from models.user import UserModel
 from models.property import PropertyModel
+from models import Base
+
 
 target_metadata = Base.metadata
 
