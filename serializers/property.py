@@ -31,6 +31,7 @@ class PropertyCreateSchema(BaseModel):
         numOfBathrooms: int
         location: str 
         imageUrl: Optional[str] = None
-
+        latitude: Optional[float] = None
+        longitude: Optional[float] = None
 
 

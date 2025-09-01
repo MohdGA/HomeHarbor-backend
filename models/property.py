@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float
+
 from sqlalchemy.orm import relationship
 from .base import BaseModel
 
@@ -15,6 +16,9 @@ class PropertyModel(BaseModel):
     location = Column(String)
     user_id = Column(Integer, ForeignKey('users.id'))
     imageUrl = Column(String, nullable=True)
+    latitude = Column(Float, nullable=True)
+    longitude = Column(Float, nullable=True)
+
 
 
     user = relationship('UserModel', back_populates='properties')
