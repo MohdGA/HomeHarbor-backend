@@ -12,7 +12,8 @@ class NotificationModel(BaseModel):
     seen = Column(Boolean)
     
     # ForeignKey
+    request_id = Column(Integer, ForeignKey('requests.id'), unique=True)
     
     
     # Relationship
-    request = relationship('RequestModel', back_populates='request', uselist=False)
+    request = relationship('RequestModel', back_populates='notification', uselist=False)
