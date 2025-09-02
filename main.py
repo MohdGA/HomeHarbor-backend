@@ -7,6 +7,7 @@ from controllers.property import router as PropertyRouter
 from controllers.reviews import router as ReviewRouter
 from controllers.requests import router as RequestRouter
 from controllers.category import router as CategoryRouter
+from controllers.notification import router as NotificationRouter
 from fastapi.middleware.cors import CORSMiddleware
 import cloudinary.uploader
 from config.cloudinary_config import cloudinary
@@ -33,6 +34,7 @@ app.include_router(UsersRouter, prefix='/api')
 app.include_router(PropertyRouter, prefix='/api')
 app.include_router(ReviewRouter, prefix='/api')
 app.include_router(RequestRouter, prefix='/api')
+app.include_router(NotificationRouter, prefix='/api')
 app.include_router(CategoryRouter, prefix='/api')
 
 @app.get('/')
