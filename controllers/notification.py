@@ -25,4 +25,15 @@ def get_notifications(request_id: int, db: Session = Depends(get_db)):
     return request.notification
     
     
+@router.put("/notifications/{notification_id}/seen", response_model=NotificationSchema)
+def mark_notification_seen(notification_id: int, db: Session = Depends(get_db)):
+    notification = db.query(NotificationModel).filter(NotificationModel.id == notification_id).first()
     
+    if not notification:
+        raise HTTPException(status_code=404, detail="Notification not found")
+    
+    notification.seen = True
+    db.commit()
+    db.refresh(notification)
+    
+    return notification
