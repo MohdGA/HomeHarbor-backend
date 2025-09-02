@@ -6,11 +6,11 @@ from serializers.category import CategorySchema, CategoryCreateSchema
 
 router = APIRouter()
 
-@router.get("/", response_model=list[CategorySchema])
+@router.get("/categories", response_model=list[CategorySchema])
 def get_categories(db: Session = Depends(get_db)):
     return db.query(CategoryModel).all()
 
-@router.post("/", response_model=CategorySchema)
+@router.post("/categories", response_model=CategorySchema)
 def create_category(category: CategoryCreateSchema, db: Session = Depends(get_db)):
     new_category = CategoryModel(name=category.name)
     db.add(new_category)
