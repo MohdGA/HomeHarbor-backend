@@ -13,7 +13,7 @@ class PropertySchema(BaseModel):
     numOfRooms: int
     numOfBathrooms: int
     location: str
-    imageUrl: Optional[str] = None
+    images: Optional[List[str]] = []
     
 
     reviews: List[ReviewSchema] = []
@@ -32,7 +32,7 @@ class PropertyCreateSchema(BaseModel):
         numOfBathrooms: int
         location: str 
         category_id: Optional[int] = None  
-        imageUrl: Optional[str] = None
+        images: Optional[List[str]] = [] 
         latitude: Optional[float] = None
         longitude: Optional[float] = None
 

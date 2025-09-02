@@ -8,6 +8,7 @@ from controllers.reviews import router as ReviewRouter
 from controllers.requests import router as RequestRouter
 from controllers.category import router as CategoryRouter
 from fastapi.middleware.cors import CORSMiddleware
+from typing import List
 import cloudinary.uploader
 from config.cloudinary_config import cloudinary
 
@@ -42,9 +43,12 @@ def home():
 
 
 @app.post("/upload/")
-async def upload_image(file: UploadFile = File(...)):
+async def upload_images(files: List[UploadFile] = File(...)):
+    urls = []
     try:
-        result = cloudinary.uploader.upload(file.file, folder="my_app_uploads")
-        return {"url": result["secure_url"], "public_id": result["public_id"]}
+        for file in files:
+            result = cloudinary.uploader.upload(file.file, folder="my_app_uploads")
+            urls.append(result["secure_url"])
+        return {"urls": urls}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
