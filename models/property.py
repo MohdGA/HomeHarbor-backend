@@ -1,6 +1,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float
 from sqlalchemy.orm import relationship
 from .base import BaseModel
+from sqlalchemy.dialects.postgresql import JSON
+
 
 
 class PropertyModel(BaseModel):
@@ -13,8 +15,7 @@ class PropertyModel(BaseModel):
     numOfBathrooms = Column(Integer)
     location = Column(String)
 
-  
-    imageUrl = Column(String, nullable=True)
+    images = Column(JSON, nullable=True)  # store list of URLs
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
 
