@@ -10,7 +10,7 @@ class NotificationModel(BaseModel):
     
     id = Column(Integer, primary_key=True, index=True)
     
-    seen = Column(Boolean)
+    seen = Column(Boolean, default=False)
     
     # ForeignKey
     property_id = Column(Integer, ForeignKey("properties.id"), nullable=False)

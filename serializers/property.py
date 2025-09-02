@@ -4,6 +4,7 @@ from .review import ReviewSchema
 from .request import RequestSchema
 from .user import UserResponseSchema
 from .category import CategorySchema
+from .request import RequestSchema
 
 
 class PropertySchema(BaseModel):
@@ -20,6 +21,8 @@ class PropertySchema(BaseModel):
     requests: List[RequestSchema] = []
     user: UserResponseSchema
     category: Optional[CategorySchema] = None
+    
+    
 
     class Config:
         from_attributes = True
@@ -35,6 +38,5 @@ class PropertyCreateSchema(BaseModel):
         images: Optional[List[str]] = [] 
         latitude: Optional[float] = None
         longitude: Optional[float] = None
-
 
 

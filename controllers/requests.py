@@ -2,9 +2,11 @@ from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from models.property import PropertyModel
 from models.request import RequestModel
-from serializers.request import RequestSchema
+from serializers.request import RequestSchema, RequestCreateSchema
 from models.user import UserModel
 from models.notification import NotificationModel
+from serializers.notification import NotificationSchema
+
 from typing import List
 from database import get_db
 from dependencies.get_current_user import get_current_user
@@ -27,16 +29,20 @@ def get_single_request(request_id: int, db: Session = Depends(get_db)):
     return request
 
 @router.post('/properties/{property_id}/requests', response_model=RequestSchema)
-def create_request(property_id:int,request:RequestSchema, db: Session = Depends(get_db)):
+def create_request(property_id:int,request:RequestCreateSchema, db: Session = Depends(get_db)):
     
     property = db.query(PropertyModel).filter(PropertyModel.id == property_id).first()
     if not property:
         raise HTTPException(status_code=404, detail="Property not found")
     
-    new_request = RequestModel(**request.dict(), property_id=property.id)
-
+    new_request = RequestModel(**request.dict(), property_id=property.id)    
     db.add(new_request)
     db.commit()
+    
     db.refresh(new_request)
+    # POST REQUEST PROCESS
+    new_notification = NotificationModel(request_id=new_request.id, property_id=property_id)
+    db.add(new_notification)
+    db.commit()
     
     return new_request
