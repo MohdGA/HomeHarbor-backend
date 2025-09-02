@@ -5,7 +5,6 @@ from .notification import NotificationSchema
 class RequestSchema(BaseModel):
    id: Optional[int] = Field(default=None)
    approval: bool
-   
    notification: NotificationSchema
    # Relationships
   
