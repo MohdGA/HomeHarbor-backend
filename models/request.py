@@ -8,14 +8,14 @@ class RequestModel(BaseModel):
 
     id = Column(Integer, primary_key=True, index=True)
 
-    # Columens For Request Table
+  
     approval = Column(Boolean)
 
-    # Foreign Keys
+  
     user_id = Column(Integer, ForeignKey('users.id'))
     property_id = Column(Integer, ForeignKey('properties.id'), nullable=False)
 
-    # Relationships
+    
     user = relationship('UserModel', back_populates="requests")
     property = relationship('PropertyModel', back_populates="requests")
     notification = relationship('NotificationModel', back_populates='request', uselist=False)
