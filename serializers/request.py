@@ -6,9 +6,9 @@ class RequestSchema(BaseModel):
    id: Optional[int] = Field(default=None)
    approval: bool
    notification: NotificationSchema
-   # Relationships
   
-   # property: PropertySchema
+  
+  
 
    class Config:
       orm_mode = True

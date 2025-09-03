@@ -40,7 +40,7 @@ def create_request(property_id:int,request:RequestCreateSchema, db: Session = De
     db.commit()
     
     db.refresh(new_request)
-    # POST REQUEST PROCESS
+   
     new_notification = NotificationModel(request_id=new_request.id, property_id=property_id)
     db.add(new_notification)
     db.commit()

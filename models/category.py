@@ -9,5 +9,5 @@ class CategoryModel(BaseModel):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, nullable=False)
 
-    # علاقة: category تحتوي على properties
+    
     properties = relationship("PropertyModel", back_populates="category")
