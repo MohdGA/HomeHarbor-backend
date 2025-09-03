@@ -12,6 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 import cloudinary.uploader
 from config.cloudinary_config import cloudinary
+from config.environment import os
 
 app = FastAPI()
 
@@ -54,3 +55,9 @@ async def upload_images(files: List[UploadFile] = File(...)):
         return {"urls": urls}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if os.getenv("APP_ENV", "development") != "production":
+    # load .env only locally
+    from dotenv import load_dotenv
+    load_dotenv()
