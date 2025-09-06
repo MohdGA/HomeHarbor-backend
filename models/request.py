@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from .base import Base, BaseModel
+from .base import BaseModel
 
-class RequestModel(Base,BaseModel):
+class RequestModel(BaseModel):
 
     __tablename__ = "requests"
 

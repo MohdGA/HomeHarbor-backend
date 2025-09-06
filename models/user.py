@@ -11,7 +11,7 @@ from config.environment import jwt_secret
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-class UserModel(Base, BaseModel):
+class UserModel(BaseModel):
 
     __tablename__ = "users"
 

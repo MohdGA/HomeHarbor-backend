@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from .base import Base, BaseModel
+from .base import  BaseModel
 
-class ReviewModel(Base, BaseModel):
+class ReviewModel(BaseModel):
     __tablename__ = 'reviews'
 
   
