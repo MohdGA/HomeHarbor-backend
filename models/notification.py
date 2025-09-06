@@ -1,10 +1,10 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
-from .base import BaseModel
+from .base import Base, BaseModel
 
 
-class NotificationModel(BaseModel):
+class NotificationModel(Base,BaseModel):
     
     __tablename__ = "notifications"
     

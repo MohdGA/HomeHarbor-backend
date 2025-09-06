@@ -1,11 +1,12 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float
 from sqlalchemy.orm import relationship
-from .base import BaseModel
+from .base import Base, BaseModel
+
 from sqlalchemy.dialects.postgresql import JSON
 
 
 
-class PropertyModel(BaseModel):
+class PropertyModel(Base, BaseModel):
     __tablename__ = "properties"
 
     id = Column(Integer, primary_key=True, index=True)

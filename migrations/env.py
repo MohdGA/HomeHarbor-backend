@@ -28,12 +28,10 @@ from models.base import Base
 from models.user import UserModel
 from models.property import PropertyModel
 
-from models import Base
-
-
 from models.review import ReviewModel
 from models.request import RequestModel
 from models.notification import NotificationModel
+from models.category import CategoryModel
 
 
 target_metadata = Base.metadata

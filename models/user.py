@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from .base import BaseModel
+from .base import Base, BaseModel
 from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 import jwt
@@ -11,7 +11,7 @@ from config.environment import jwt_secret
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-class UserModel(BaseModel):
+class UserModel(Base, BaseModel):
 
     __tablename__ = "users"
 
