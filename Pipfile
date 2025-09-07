@@ -13,11 +13,11 @@ passlib = "*"
 bcrypt = "*"
 pyjwt = "*"
 python-dotenv = "*"
-alembic = "*"
 cloudinary = "*"
 python-multipart = "*"
 gunicorn = "*"
 uvicorn-worker = "*"
+alembic = "*"
 
 [dev-packages]
 pytest = "*"
