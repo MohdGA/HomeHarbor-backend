@@ -1,3 +1,4 @@
+import os
 from config.environment import db_URI
 from logging.config import fileConfig
 
@@ -10,8 +11,10 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
-import os
-config.set_main_option("sqlalchemy.url", os.getenv("DATABASE_URL", db_URI))
+
+# Use the new Heroku-safe variable
+db_URI = os.getenv("SQLALCHEMY_DATABASE_URL")
+config.set_main_option("sqlalchemy.url", db_URI)
 
 
 
