@@ -1,21 +1,26 @@
 import os
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-
+from sqlalchemy import engine_from_config, pool
 from alembic import context
 
-# this is the Alembic Config object, which provides
-# access to the values within the .ini file in use.
+# -------------------------
+# Load environment variables
+# -------------------------
+from dotenv import load_dotenv
+load_dotenv()  # Load .env file
+
+# -------------------------
+# Alembic Config
+# -------------------------
 config = context.config
 
 # -------------------------
 # Set the database URL safely
 # -------------------------
-db_URI = os.getenv("DATABASE_URL")
-if db_URI is None:
-    raise ValueError("DATABASE_URL environment variable not set")
+db_URI = os.getenv("DB_URI")  # Make sure your .env has DB_URI
+if not db_URI:
+    raise ValueError("DB_URI environment variable not set!")
 
 # Replace 'postgres://' with 'postgresql://' for SQLAlchemy compatibility
 if db_URI.startswith("postgres://"):
@@ -71,17 +76,13 @@ def run_migrations_online() -> None:
     with connectable.connect() as connection:
         context.configure(
             connection=connection,
-            target_metadata=target_metadata
+            target_metadata=target_metadata,
         )
-
         with context.begin_transaction():
             context.run_migrations()
 
 
 # -------------------------
-# Execute the correct mode
+# Execute migrations online
 # -------------------------
-if context.is_offline_mode():
-    run_migrations_offline()
-else:
-    run_migrations_online()
+run_migrations_online()
