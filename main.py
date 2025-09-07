@@ -22,6 +22,7 @@ origins = [
     "http://localhost:5174",
     "http://127.0.0.1:5173",
     "http://localhost:5173",
+    "https://home-harbor-frontend-x9kl-a7wz30gs4-homeharbors-projects.vercel.app"
 ]
 
 app.add_middleware(
